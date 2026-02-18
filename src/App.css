@@ -1,0 +1,257 @@
+:root {
+  --primary-blue: #0056b3;
+  --bg-gray: #f5f7f9;
+  --text-main: #333;
+  --text-muted: #777;
+  --border-color: #e0e0e0;
+  --status-pending: #8e8e8e;
+  --status-progress: #f39c12;
+  --status-completed: #27ae60;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f0f2f5;
+  margin: 0;
+}
+
+.app-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background: white;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.main-header,
+.form-header {
+  background: var(--primary-blue);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.main-header h1 {
+  font-size: 1.2rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+/* Search Bar */
+.search-bar {
+  padding: 15px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* Accordion Sections */
+.status-section {
+  border-bottom: 1px solid #eee;
+}
+
+.status-header {
+  padding: 12px 15px;
+  background: #f8f9fa;
+  font-weight: 600;
+  font-size: 0.85rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.status-header::-webkit-details-marker {
+  display: none;
+}
+
+/* Task Items */
+.task-item {
+  display: flex;
+  padding: 15px;
+  border-bottom: 1px solid #fafafa;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.task-item:hover {
+  background: #fcfcfc;
+}
+
+.task-content h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--primary-blue);
+}
+
+.task-content p {
+  margin: 5px 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.task-date {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+/* Status Pills */
+.status-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.pending {
+  color: var(--status-pending);
+}
+
+.in-progress {
+  color: var(--status-progress);
+}
+
+.completed {
+  color: var(--status-completed);
+}
+
+/* Floating Action Button */
+.fab {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(140px);
+  /* Adjust based on container width */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Styles */
+.form-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.input-field.area {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  background: white;
+  border: 1px solid var(--primary-blue);
+  color: var(--primary-blue);
+  padding: 10px 25px;
+  border-radius: 4px;
+}
+
+.btn-submit {
+  background: var(--primary-blue);
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 4px;
+}
+
+/* Update these sections in your App.css */
+
+.app-container {
+  max-width: 500px;
+  /* Limits width on Web */
+  margin: 2rem auto;
+  /* Centers the "phone" on Web */
+  background: white;
+  min-height: 80vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 600px) {
+  .app-container {
+    max-width: 100%;
+    margin: 0;
+    min-height: 100vh;
+    border-radius: 0;
+  }
+
+  .fab {
+    right: 20px;
+    left: auto;
+    transform: none;
+  }
+}
+
+/* Desktop FAB positioning */
+@media (min-width: 601px) {
+  .fab {
+    position: absolute;
+    /* Keeps it inside the white container */
+    bottom: 30px;
+    right: 30px;
+    left: auto;
+    transform: none;
+  }
+}
+
+/* Search Input Focus Effect */
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.1);
+}
+
+/* Scrollbar for the list on Web */
+.task-list-container {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 70vh;
+}

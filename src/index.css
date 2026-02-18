@@ -1,0 +1,82 @@
+:root {
+  /* Light Mode (Default) */
+  --primary-color: #0056D2;
+  /* Standard Blue from reference */
+  --bg-color: #F8F9FB;
+  /* Light Gray Background */
+  --surface-color: #FFFFFF;
+  /* White Cards */
+  --text-primary: #1A1A1A;
+  /* Near Black */
+  --text-secondary: #757575;
+  /* Gray Text */
+  --border-color: #EEF0F2;
+  /* Light Border */
+  --input-bg: #FFFFFF;
+  --modal-overlay: rgba(0, 0, 0, 0.3);
+
+  /* Status Colors */
+  --status-pending: #E0E0E0;
+  /* Light Grey */
+  --status-in-progress: #FF9800;
+  /* Orange */
+  --status-completed: #4CAF50;
+  /* Green */
+  --status-text-pending: #757575;
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+[data-theme='dark'] {
+  /* Dark Mode */
+  --primary-color: #3385FF;
+  /* Lighter Blue for Dark Mode */
+  --bg-color: #121212;
+  /* Very Dark Gray */
+  --surface-color: #1E1E1E;
+  /* Dark Surface */
+  --text-primary: #E0E0E0;
+  /* Light Text */
+  --text-secondary: #A0A0A0;
+  /* Dim Text */
+  --border-color: #333333;
+  /* Dark Border */
+  --input-bg: #2C2C2C;
+  --modal-overlay: rgba(0, 0, 0, 0.7);
+
+  --status-pending: #424242;
+  --status-in-progress: #F57C00;
+  --status-completed: #388E3C;
+  --status-text-pending: #BDBDBD;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Base resets */
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-secondary);
+  border-radius: 10px;
+  opacity: 0.5;
+}
+
