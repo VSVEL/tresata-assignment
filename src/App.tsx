@@ -15,9 +15,13 @@ const App: React.FC = () => {
 
 
   const filteredTasks = useMemo(() => {
-    return tasks.filter(task => 
-      task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      task.description.toLowerCase().includes(searchTerm.toLowerCase())
+    const term = searchTerm.toLowerCase().trim();
+    if (!term) return tasks;
+
+    return tasks.filter(task =>
+      task.title.toLowerCase().includes(term) ||
+      task.description.toLowerCase().includes(term) ||
+      task.status.toLowerCase().includes(term)
     );
   }, [tasks, searchTerm]);
 
@@ -40,34 +44,39 @@ const App: React.FC = () => {
             <h1>TO-DO APP</h1>
           </header>
           <div className="search-bar">
-             <input type="text" placeholder="Search To-Do" />
+            <input
+              type="text"
+              placeholder="Search To-Do"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
-          <TaskList 
-            tasks={filteredTasks} 
-            onEdit={openEditView} 
-            onDelete={deleteTask} 
+          <TaskList
+            tasks={filteredTasks}
+            onEdit={openEditView}
+            onDelete={deleteTask}
           />
           <button className="fab" onClick={openAddView}>+</button>
         </>
       )}
 
       {currentView === 'ADD' && (
-        <TaskForm 
-          title="Add Task" 
-          onSubmit={(t, d) => { addTask(t, d); goBack(); }} 
-          onCancel={goBack} 
+        <TaskForm
+          title="Add Task"
+          onSubmit={(t, d) => { addTask(t, d); goBack(); }}
+          onCancel={goBack}
         />
       )}
 
       {currentView === 'EDIT' && editingTask && (
-        <TaskForm 
-          title="Edit Task" 
+        <TaskForm
+          title="Edit Task"
           initialTask={editingTask}
-          onSubmit={(t, d, s) => { 
-            updateTask(editingTask.id, { title: t, description: d, status: s }); 
-            goBack(); 
-          }} 
-          onCancel={goBack} 
+          onSubmit={(t, d, s) => {
+            updateTask(editingTask.id, { title: t, description: d, status: s });
+            goBack();
+          }}
+          onCancel={goBack}
         />
       )}
     </div>

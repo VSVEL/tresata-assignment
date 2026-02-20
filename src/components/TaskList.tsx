@@ -11,13 +11,6 @@ interface Props {
 const TaskList: React.FC<Props> = ({ tasks, onEdit, onDelete }) => {
   const sections: Status[] = ['In Progress', 'Pending', 'Completed'];
 
-  if (tasks.length === 0) {
-    return (
-      <div style={{ padding: '40px', textAlign: 'center', color: '#888' }}>
-        No tasks found matching your search.
-      </div>
-    );
-  }
 
   return (
     <div className="task-list-container">
@@ -30,9 +23,15 @@ const TaskList: React.FC<Props> = ({ tasks, onEdit, onDelete }) => {
               <span className="chevron">⌄</span>
             </summary>
             <div className="items-container">
-              {filtered.map(task => (
-                <TaskItem key={task.id} task={task} onEdit={onEdit} onDelete={onDelete} />
-              ))}
+              {filtered.length > 0 ? (
+                filtered.map(task => (
+                  <TaskItem key={task.id} task={task} onEdit={onEdit} onDelete={onDelete} />
+                ))
+              ) : (
+                <div style={{ padding: '15px', textAlign: 'center', color: '#888', fontSize: '0.85rem' }}>
+                  No tasks
+                </div>
+              )}
             </div>
           </details>
         );

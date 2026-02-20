@@ -11,7 +11,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -29,20 +29,23 @@ body {
   flex-direction: column;
 }
 
-/* Header */
 .main-header,
 .form-header {
   background: var(--primary-blue);
   color: white;
-  padding: 1rem;
+  padding: 0 1rem;
+  height: 60px;
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
-.main-header h1 {
+.main-header h1,
+.form-header h2 {
   font-size: 1.2rem;
   margin: 0;
   letter-spacing: 1px;
+  font-weight: 600;
 }
 
 .back-btn {
@@ -255,3 +258,226 @@ body {
   overflow-y: auto;
   max-height: 70vh;
 }
+
+/* Status Select Styles */
+.status-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.status-select.pending {
+  color: var(--status-pending);
+  border-color: var(--status-pending);
+}
+
+.status-select.in-progress {
+  color: var(--status-progress);
+  border-color: var(--status-progress);
+}
+
+.status-select.completed {
+  color: var(--status-completed);
+  border-color: var(--status-completed);
+}
+
+.status-option {
+  color: var(--text-main);
+  background: white;
+}
+
+.status-option.pending {
+  color: var(--status-pending);
+}
+
+.status-option.in-progress {
+  color: var(--status-progress);
+}
+
+.status-option.completed {
+  color: var(--status-completed);
+}
+
+/* Custom Accordion Status Selector UI */
+.status-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.status-accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.header-selection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-selector-container {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.status-option-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.status-option-item:hover {
+  background: #fafafa;
+}
+
+.status-option-item.active {
+  background: #f8f8f8;
+}
+
+.status-dot-large {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot-large.pending { background: #ccc; }
+.status-dot-large.in-progress { background: #f39c12; }
+.status-dot-large.completed { background: #27ae60; }
+
+.status-label {
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Task Item Card Redesign - Final Polish */
+.task-item-card {
+  padding: 20px;
+  background: white;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.task-item-layout {
+  display: flex;
+  gap: 15px;
+}
+
+.task-avatar {
+  width: 42px;
+  height: 42px;
+  border: 1.5px solid #0056b3;
+  color: #0056b3;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.task-main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-title {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #0056b3;
+  font-weight: 700;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.pending .status-dot { background-color: var(--status-pending); }
+.in-progress .status-dot { background-color: var(--status-progress); }
+.completed .status-dot { background-color: var(--status-completed); }
+
+.status-text {
+  font-size: 0.85rem;
+  color: #444;
+  font-weight: 500;
+}
+
+.task-description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+.task-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.task-date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.task-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.task-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.task-actions button:active {
+  transform: scale(0.9);
+}
+
+.edit-btn { color: #0056b3; }
+.delete-btn { color: #e74c3c; }
