@@ -1,73 +1,77 @@
-# React + TypeScript + Vite
+# Modern To-Do App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek, responsive, and feature-rich To-Do application built with React, TypeScript, and Vite. This project focuses on clean UI/UX, persistent task management, and a polished mobile-first design.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Dynamic Task Management**: Add, edit, and delete tasks with ease.
+- **Persistent Storage**: Uses `localStorage` to save your tasks locally, so they persist across sessions.
+- **Smart Search**: Real-time filtering by task title, description, or status.
+- **Categorized Sections**: Tasks are automatically grouped into **Pending**, **In Progress**, and **Completed**. These sections remain visible even when empty to maintain layout consistency.
+- **Custom UI Components**:
+  - **Avatar System**: Each task features a contact-style avatar with the first letter of its title.
+  - **Accordion Status Selector**: A custom-built collapsible selector for task statuses with colored indicators and highlights.
+  - **Polished Card Design**: A modern, 3-line card layout with color-coded action icons (blue for edit, red for delete).
+- **Responsive Design**: Optimized for both mobile and desktop views with a centralized "phone-like" container on larger screens.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Core**: React 19, TypeScript
+- **Icons**: Lucide React
+- **Styling**: Vanilla CSS with a custom design system
+- **Build Tool**: Vite
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [npm](https://www.npmjs.com/) (usually comes with Node.js)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/VSVEL/tresata-assignment.git
+   cd tresata-assignment
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+### Running Locally
+
+To start the development server:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The application will be available at `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Building for Production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To create an optimized production build:
+
+```bash
+npm run build
 ```
+
+## Project Structure
+
+```text
+src/
+├── components/       # UI Components (TaskItem, TaskList, AddTaskForm)
+├── hooks/            # Custom React hooks (useTasks for logic)
+├── types.ts          # TypeScript type definitions
+├── App.tsx           # Main application entry and routing
+├── App.css           # Global styles and design system tokens
+└── main.tsx          # React DOM mounting
+```
+
+## Contributing
+
+This was developed as part of a technical assignment. Feel free to explore and modify the code!
